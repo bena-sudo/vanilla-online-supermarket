@@ -1,6 +1,6 @@
 export { getDataSupabase };
 
-async function getDataSupabase({table, column, filter}) {
+async function getDataSupabase({ table, column, filter }) {
   if (!column) {
     column = "*";
   }

@@ -1,3 +1,9 @@
+// STYLE
 import './style/style.scss'
-import viteLogo from '/vite.svg'
+// CONTROLLER
+import { showProductList } from './controller/productController';
 
+document.addEventListener("DOMContentLoaded", async ()=>{
+  const containerApp = document.querySelector("#containerApp");
+  containerApp.append( await showProductList())
+})
