@@ -1,11 +1,19 @@
 // STYLE
-import './style/style.scss'
+import "./style/style.scss";
 // CONTROLLER
-import { showProductList } from './controller/productController';
-import { showCategoryList } from './controller/categoryController';
+import { showProductList, showProductDetail } from "./controller/productController";
+import { showCategoryList } from "./controller/categoryController";
 
-document.addEventListener("DOMContentLoaded", async ()=>{
+async function loadHomePage(containerApp) {
+  containerApp.append(await showCategoryList());
+  containerApp.append(await showProductList());
+}
+
+async function loadProductDatailPage(containerApp,producteID) {
+  containerApp.append(await showProductDetail(producteID));
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
   const containerApp = document.querySelector("#containerApp");
-  containerApp.append( await showCategoryList())
-  containerApp.append( await showProductList())
-})
+  loadHomePage(containerApp);
+});

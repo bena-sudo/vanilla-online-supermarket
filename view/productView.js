@@ -1,4 +1,4 @@
-export { displayProductsInCardsLists };
+export { displayProductsInCardsLists, displayProductDetail };
 
 function displayProductInCard(product) {
   return `
@@ -29,4 +29,23 @@ function displayProductsInCardsLists(products) {
   `;
 
   return productsDiv;
+}
+
+function displayProductDetail(product) {
+  const productDiv = document.createElement("div");
+  productDiv.innerHTML = `
+    <div
+      class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+    >
+      <div class="my-3 p-3">
+        <h2 class="display-5">${product.name}</h2>
+        <p class="lead">${product.description}</p>
+      </div>
+      <div
+        class="bg-white box-shadow mx-auto"
+        style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"
+      ></div>
+    </div>
+  `;
+  return productDiv;
 }
