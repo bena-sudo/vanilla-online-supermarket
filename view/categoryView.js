@@ -1,4 +1,6 @@
-export { displayCategoriesInToolbar };
+export { displayCategoriesInToolbar, displayCategoryDetail };
+// VIEW
+import { displayProductsInCardsLists } from "./productView";
 
 function displayCategoryInButton(category) {
   return `
@@ -24,4 +26,26 @@ function displayCategoriesInToolbar(categories) {
     </div>
   `;
   return productsDiv;
+}
+
+function displayCategoryDetail(category,products) {
+  const categoryDiv = document.createElement("div");
+  categoryDiv.innerHTML = `
+    <div
+      class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+    >
+      <div class="my-3 p-3">
+        <h2 class="display-5">${category.name}</h2>
+        <p class="lead">${category.description}</p>
+      </div>
+      <div id="porductsList"
+        class="bg-white box-shadow mx-auto"
+        style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"
+      ></div>
+    </div>
+  `;
+
+  const productsDiv = categoryDiv.querySelector("#porductsList");
+  productsDiv.append(displayProductsInCardsLists(products));
+  return categoryDiv;
 }

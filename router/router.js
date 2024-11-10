@@ -1,5 +1,8 @@
 export { router };
-import { showCategoryList } from "../controller/categoryController";
+import {
+  showCategoryList,
+  showCategoryDetail,
+} from "../controller/categoryController";
 import {
   showProductList,
   showProductDetail,
@@ -17,6 +20,10 @@ async function router(route, containerApp) {
     case "product":
       containerApp.innerHTML = "";
       containerApp.append(await showProductDetail(routeID));
+      break;
+    case "category":
+      containerApp.innerHTML = "";
+      containerApp.append(await showCategoryDetail(routeID));
       break;
     default:
       window.location.hash = "#/store";
