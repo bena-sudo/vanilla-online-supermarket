@@ -28,7 +28,7 @@ function displayCategoriesInToolbar(categories) {
   return productsDiv;
 }
 
-function displayCategoryDetail(category,products) {
+function displayCategoryDetail(category, products) {
   const categoryDiv = document.createElement("div");
   categoryDiv.innerHTML = `
     <div
@@ -44,7 +44,6 @@ function displayCategoryDetail(category,products) {
       ></div>
     </div>
   `;
-
   const productsDiv = categoryDiv.querySelector("#porductsList");
   productsDiv.append(displayProductsInCardsLists(products));
   return categoryDiv;
