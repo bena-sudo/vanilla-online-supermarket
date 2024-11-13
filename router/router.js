@@ -14,8 +14,11 @@ async function router(route, containerApp) {
   switch (routeModel) {
     case "store":
       containerApp.innerHTML = "";
-      containerApp.append(await showCategoryList());
       containerApp.append(await showProductList());
+      break;
+    case "categories":
+      containerApp.innerHTML = "";
+      containerApp.append(await showCategoryList());
       break;
     case "product":
       containerApp.innerHTML = "";

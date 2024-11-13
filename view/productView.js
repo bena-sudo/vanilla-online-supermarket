@@ -1,4 +1,5 @@
 export { displayProductsInCardsLists, displayProductDetail };
+// CONTROLLER
 import { getImageProduct } from "../controller/imageController";
 
 async function displayProductInCard(product) {
@@ -18,19 +19,19 @@ async function displayProductInCard(product) {
 }
 
 async function generateProductsInCard(products) {
-  const productsHTML = await Promise.all(
+  const listProductsCards = await Promise.all(
     products.map(async (product) => {
       return await displayProductInCard(product);
     })
   );
-  return productsHTML.join("");
+  return listProductsCards.join("");
 }
 
-function generateProductsDiv(productsHTML) {
+function generateProductsDiv(listProductsCards) {
   const productsDiv = document.createElement("div");
   productsDiv.innerHTML = `
     <div class="row row-cols-1 row-cols-md-5 g-4">
-      ${productsHTML}
+      ${listProductsCards}
     </div>
   `;
   return productsDiv;

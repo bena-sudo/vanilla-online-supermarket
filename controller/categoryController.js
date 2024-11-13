@@ -3,6 +3,7 @@ export { showCategoryList, showCategoryDetail };
 import {
   displayCategoriesInToolbar,
   displayCategoryDetail,
+  displayCategoriesInCardsLists,
 } from "../view/categoryView";
 import { getListAllProductsByCategoryID } from "../service/productService";
 // SERVICE
@@ -13,7 +14,7 @@ import {
 
 async function showCategoryList() {
   const categoriesList = await getListAllCategories();
-  return displayCategoriesInToolbar(categoriesList);
+  return displayCategoriesInCardsLists(categoriesList);
 }
 
 async function showCategoryDetail(categoryID) {
