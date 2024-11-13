@@ -29,6 +29,8 @@ async function router(route, containerApp) {
       containerApp.append(await showCategoryDetail(routeID));
       break;
     default:
+      // Como solucione esto
+      console.log(hash);
       window.location.hash = "#/store";
   }
 }

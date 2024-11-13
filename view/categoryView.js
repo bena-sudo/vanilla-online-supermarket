@@ -52,7 +52,7 @@ async function generateCategoryInCard(categories) {
   const listCategoriesCards = await Promise.all(
     categories.map(async (category) => {
       return await displayCategoryInCard(category);
-    })
+    }),
   );
   return listCategoriesCards.join("");
 }

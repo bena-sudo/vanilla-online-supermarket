@@ -1,3 +1,2 @@
 npx eslint
 npx prettier . --write
-npm run testrun

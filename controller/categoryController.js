@@ -1,7 +1,6 @@
 export { showCategoryList, showCategoryDetail };
 // VIEW
 import {
-  displayCategoriesInToolbar,
   displayCategoryDetail,
   displayCategoriesInCardsLists,
 } from "../view/categoryView";

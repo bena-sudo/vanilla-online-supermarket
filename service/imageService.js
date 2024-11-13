@@ -1,6 +1,5 @@
 export { getListImagesURLByProductID };
-// SERVICE
-import { getImageSupabase } from "./supabaseService";
+import { getDataSupabase } from "./supabaseService";
 
 async function getListImagesURLByProductID(productID) {
   const data = await getDataSupabase({
