@@ -39,7 +39,7 @@ function generateProductsDiv(productsHTML) {
 async function displayProductsInCardsLists(products) {
   const listProductsCards = await generateProductsInCard(products);
   const productsDiv = generateProductsDiv(listProductsCards);
-  return productsDiv; // O el contenedor donde desees renderizar
+  return productsDiv;
 }
 
 function displayProductDetail(product) {
