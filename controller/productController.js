@@ -12,7 +12,7 @@ async function showProductList() {
   return displayProductsInCardsLists(productsList);
 }
 
-async function showProductDetail(producteID) {
-  const product = await getProductInfo(producteID);
+async function showProductDetail(productID) {
+  const product = await getProductInfo(productID);
   return displayProductDetail(product[0]);
 }

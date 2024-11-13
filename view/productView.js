@@ -1,11 +1,12 @@
 export { displayProductsInCardsLists, displayProductDetail };
+import { getImageProduct } from "../controller/imageController";
 
-function displayProductInCard(product) {
+async function displayProductInCard(product) {
+  const image = await getImageProduct(product.imageURL);
   return `
     <div class="col">
       <div class="card h-100">
-        <rect width="100%" height="100%" fill="#868e96"></rect>
-        <!--<img src="..." class="card-img-top" alt="...">-->
+        <img src="${image}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${product.name}</h5>
           <p class="card-text">${product.weight} g aprox.</p>
@@ -16,19 +17,29 @@ function displayProductInCard(product) {
   `;
 }
 
-function displayProductsInCardsLists(products) {
+async function generateProductsInCard(products) {
+  const productsHTML = await Promise.all(
+    products.map(async (product) => {
+      return await displayProductInCard(product);
+    })
+  );
+  return productsHTML.join("");
+}
+
+function generateProductsDiv(productsHTML) {
   const productsDiv = document.createElement("div");
   productsDiv.innerHTML = `
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      ${products
-        .map((product) => {
-          return displayProductInCard(product);
-        })
-        .join("")}
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+      ${productsHTML}
     </div>
   `;
-
   return productsDiv;
+}
+
+async function displayProductsInCardsLists(products) {
+  const listProductsCards = await generateProductsInCard(products);
+  const productsDiv = generateProductsDiv(listProductsCards);
+  return productsDiv; // O el contenedor donde desees renderizar
 }
 
 function displayProductDetail(product) {
