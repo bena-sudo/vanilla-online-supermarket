@@ -7,11 +7,58 @@ async function displayProductInCard(product) {
   return `
     <div class="col">
       <div class="card h-100">
-        <img src="${image}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">${product.name}</h5>
-          <p class="card-text">${product.weight} g aprox.</p>
-          <p class="card-text">${product.price} €/ud.</p>
+          <button
+            class="btn btn-link text-decoration-none"
+            data-toggle="modal"
+            data-target="#ModalLong${product.id}"
+          >
+            <img src="${image}" class="card-img-top" alt="..." />
+            <h5 class="card-title text-muted">${product.name}</h5>
+            <p class="card-text text-muted">${product.weight} g aprox.</p>
+            <p class="card-text text-muted">${product.price} €/ud.</p>
+          </button>
+          <button
+            type="button"
+            href="#/store"
+            class="btn btn-outline-warning w-100"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal --->
+    <div
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      id="ModalLong${product.id}"
+      aria-labelledby="ModalLongTitle${product.id}"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+              <div>
+                <h2>${product.name}</h2>
+                <p>${product.description}</p>
+              </div>
+              
+            
+          </div>
         </div>
       </div>
     </div>
@@ -22,7 +69,7 @@ async function generateProductsInCard(products) {
   const listProductsCards = await Promise.all(
     products.map(async (product) => {
       return await displayProductInCard(product);
-    }),
+    })
   );
   return listProductsCards.join("");
 }
