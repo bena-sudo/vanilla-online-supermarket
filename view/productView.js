@@ -7,21 +7,21 @@ async function displayProductInCard(product) {
   return `
     <div class="col">
       <div class="card h-100">
-        <div class="card-body">
+        <div class="card-body d-flex flex-column">
           <button
             class="btn btn-link text-decoration-none"
             data-toggle="modal"
             data-target="#ModalLong${product.id}"
           >
             <img src="${image}" class="card-img-top" alt="..." />
-            <h5 class="card-title text-muted">${product.name}</h5>
-            <p class="card-text text-muted">${product.weight} g aprox.</p>
-            <p class="card-text text-muted">${product.price} €/ud.</p>
+            <h5 class="card-title text-start text-muted">${product.name}</h5>
+            <p class="card-text text-start text-muted">${product.weight} g aprox.</p>
+            <p class="card-text text-start text-muted mt-auto">${product.price} €/ud.</p>
           </button>
           <button
             type="button"
             href="#/store"
-            class="btn btn-outline-warning w-100"
+            class="btn btn-outline-warning w-100 mt-auto"
           >
             Add to cart
           </button>
@@ -51,13 +51,10 @@ async function displayProductInCard(product) {
             </button>
           </div>
           <div class="modal-body">
-            
               <div>
                 <h2>${product.name}</h2>
                 <p>${product.description}</p>
               </div>
-              
-            
           </div>
         </div>
       </div>

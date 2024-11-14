@@ -1,45 +1,20 @@
 export {
-  displayCategoriesInToolbar,
   displayCategoryDetail,
   displayCategoriesInCardsLists,
+  displayCategoriesInNavLists,
 };
 // VIEW
 import { displayProductsInCardsLists } from "./productView";
 // CONTROLLER
 import { getImageCategory } from "../controller/imageController";
 
-function displayCategoryInButton(category) {
-  return `
-    <button type="button" class="btn btn-secondary">${category.name}</button>
-  `;
-}
-
-function displayCategoriesInToolbar(categories) {
-  const productsDiv = document.createElement("div");
-  productsDiv.innerHTML = `
-    <div
-      class="btn-toolbar"
-      role="toolbar"
-      aria-label="Toolbar with button groups"
-    >
-      <div class="btn-group mr-2" role="group" aria-label="First group">
-        ${categories
-          .map((category) => {
-            return displayCategoryInButton(category);
-          })
-          .join("")}
-      </div>
-    </div>
-  `;
-  return productsDiv;
-}
-
+// UNUSED
 async function displayCategoryInCard(category) {
   const image = await getImageCategory(category.imageURL);
   return `
     <div class="col">
       <div class="card h-100">
-        <img src="${image}" class="card-img-top" alt="...">
+        <img src="${image}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">${category.name}</h5>
         </div>
@@ -48,15 +23,17 @@ async function displayCategoryInCard(category) {
   `;
 }
 
+// UNUSED
 async function generateCategoryInCard(categories) {
   const listCategoriesCards = await Promise.all(
     categories.map(async (category) => {
       return await displayCategoryInCard(category);
-    }),
+    })
   );
   return listCategoriesCards.join("");
 }
 
+// UNUSED
 function generateCategoriesDiv(listCategoriesCards) {
   const categoriesDiv = document.createElement("div");
   categoriesDiv.innerHTML = `
@@ -67,12 +44,14 @@ function generateCategoriesDiv(listCategoriesCards) {
   return categoriesDiv;
 }
 
+// UNUSED
 async function displayCategoriesInCardsLists(categories) {
   const listCategoriesCards = await generateCategoryInCard(categories);
   const categoriesDiv = generateCategoriesDiv(listCategoriesCards);
   return categoriesDiv;
 }
 
+// UNUSED
 function displayCategoryDetail(category, products) {
   const categoryDiv = document.createElement("div");
   categoryDiv.innerHTML = `
@@ -92,4 +71,55 @@ function displayCategoryDetail(category, products) {
   const productsDiv = categoryDiv.querySelector("#porductsList");
   productsDiv.append(displayProductsInCardsLists(products));
   return categoryDiv;
+}
+async function displayCategoryInLi(category) {
+  //const image = await getImageCategory(category.imageURL);
+  return `
+      <li class="nav-item">
+        <a class="nav-link active" href="#/category/${category.id}" onclick="loadContent('categoria1')">
+          ${category.name}
+        </a>
+      </li>
+    `;
+}
+
+async function generateCategoryInLi(categories) {
+  const listCategoriesCards = await Promise.all(
+    categories.map(async (category) => {
+      return await displayCategoryInLi(category);
+    })
+  );
+  return listCategoriesCards.join("");
+}
+
+function generateCategoriesNav(listCategoriesLi, porductsListDivs) {
+  const categoriesDiv = document.createElement("div");
+  categoriesDiv.innerHTML = `
+    <div class="row">
+      <!-- Nav categories -->
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="position-sticky">
+          <ul class="nav flex-column">
+            ${listCategoriesLi}
+          </ul>
+        </div>
+      </nav>
+      <!-- Container products -->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div id="productsDiv"></div>
+      </main>
+    </div>
+  `;
+  const porductsDiv = categoriesDiv.querySelector("#productsDiv");
+  porductsDiv.append(porductsListDivs);
+  return categoriesDiv;
+}
+
+async function displayCategoriesInNavLists(categories, porductsListDivs) {
+  const listCategoriesLi = await generateCategoryInLi(categories);
+  const categoriesDiv = generateCategoriesNav(
+    listCategoriesLi,
+    porductsListDivs
+  );
+  return categoriesDiv;
 }

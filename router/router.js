@@ -1,7 +1,7 @@
 export { router };
 import {
   showCategoryList,
-  showCategoryDetail,
+  showCategoryListById
 } from "../controller/categoryController";
 import {
   showProductList,
@@ -26,7 +26,7 @@ async function router(route, containerApp) {
       break;
     case "category":
       containerApp.innerHTML = "";
-      containerApp.append(await showCategoryDetail(routeID));
+      containerApp.append(await showCategoryListById(routeID));
       break;
     default:
       // Como solucione esto
