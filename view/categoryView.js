@@ -28,7 +28,7 @@ async function generateCategoryInCard(categories) {
   const listCategoriesCards = await Promise.all(
     categories.map(async (category) => {
       return await displayCategoryInCard(category);
-    })
+    }),
   );
   return listCategoriesCards.join("");
 }
@@ -87,7 +87,7 @@ async function generateCategoryInLi(categories) {
   const listCategoriesCards = await Promise.all(
     categories.map(async (category) => {
       return await displayCategoryInLi(category);
-    })
+    }),
   );
   return listCategoriesCards.join("");
 }
@@ -119,7 +119,7 @@ async function displayCategoriesInNavLists(categories, porductsListDivs) {
   const listCategoriesLi = await generateCategoryInLi(categories);
   const categoriesDiv = generateCategoriesNav(
     listCategoriesLi,
-    porductsListDivs
+    porductsListDivs,
   );
   return categoriesDiv;
 }

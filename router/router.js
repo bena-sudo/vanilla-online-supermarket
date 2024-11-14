@@ -1,7 +1,7 @@
 export { router };
 import {
   showCategoryList,
-  showCategoryListById
+  showCategoryListById,
 } from "../controller/categoryController";
 import {
   showProductList,
