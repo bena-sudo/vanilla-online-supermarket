@@ -69,7 +69,7 @@ async function generateProductsInCard(products) {
   const listProductsCards = await Promise.all(
     products.map(async (product) => {
       return await displayProductInCard(product);
-    })
+    }),
   );
   return listProductsCards.join("");
 }
