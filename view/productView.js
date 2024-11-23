@@ -1,8 +1,39 @@
 export { displayProductsInCardsLists, displayProductDetail };
 // CONTROLLER
 import { getImageProduct } from "../controller/imageController";
+// SERVICE
+import { getListAllProductsByCategoryID } from "../service/productService";
+
+async function displayProductRelatedInCard(product) {
+  const image = await getImageProduct(product.imageURL);
+  return ` <div class="col">
+    <div class="card text-center">
+      <img src="${image}" class="card-img-top" alt="Beef chunk for stew" />
+      <div class="card-body text-sm small">
+        <h6 class="card-title text-start">${product.name}</h6>
+        <p class="card-text text-start">Tray 300 g approx.</p>
+        <p class="fw-bold text-start">4,11 € /unit</p>
+        <button class="btn btn-outline-warning w-100 mt-auto">
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
 
 async function displayProductInCard(product) {
+  const productsRelated = await getListAllProductsByCategoryID(
+    product.categoryID
+  );
+
+  const listProductsRelatedCards = await Promise.all(
+    productsRelated.map(async (pro) => {
+      if (product.id != pro.id) {
+        return await displayProductRelatedInCard(pro);
+      }
+    })
+  );
+
   const image = await getImageProduct(product.imageURL);
   return `
     <div class="col">
@@ -15,8 +46,12 @@ async function displayProductInCard(product) {
           >
             <img src="${image}" class="card-img-top" alt="..." />
             <h5 class="card-title text-start text-muted">${product.name}</h5>
-            <p class="card-text text-start text-muted">${product.weight} g aprox.</p>
-            <p class="card-text text-start text-muted mt-auto">${product.price} €/ud.</p>
+            <p class="card-text text-start text-muted">
+              ${product.weight} g aprox.
+            </p>
+            <p class="fw-bold text-start text-muted mt-auto">
+              ${product.price} /unit
+            </p>
           </button>
           <button
             type="button"
@@ -51,10 +86,42 @@ async function displayProductInCard(product) {
             </button>
           </div>
           <div class="modal-body">
-              <div>
-                <h2>${product.name}</h2>
-                <p>${product.description}</p>
+            <div class="container mt-4">
+              <div class="row">
+                <!-- Image Section -->
+                <div class="col-md-7">
+                  <img
+                    src="${image}"
+                    class="img-fluid"
+                    alt="Hacendado Mediterranean fruit + milk"
+                  />
+                </div>
+
+                <!-- Product Details Section -->
+                <div class="col-md-4">
+                  <h4 class="fw-bold">${product.name}</h4>
+                  <p class="text-muted">${product.description}</p>
+                  <h2 class="fw-bold text-success">${product.price}/unit</h2>
+                  <button class="btn btn-warning btn-lg w-100 mt-3">
+                    Add to cart
+                  </button>
+                </div>
               </div>
+            </div>
+            <div class="container my-4">
+              <h5 class="mb-4 text-sm">Related products</h5>
+              <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                <!-- Product Card 1 -->
+                ${listProductsRelatedCards.join("")}
+              </div>
+              <p class="mt-4 text-muted small">
+                This project is a test application developed solely for
+                educational purposes as part of a learning project. It is not a
+                functional application and has no commercial or profit-oriented
+                intent. The content and design are purely recreations created to
+                practice technical skills and do not represent a real product.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -66,7 +133,7 @@ async function generateProductsInCard(products) {
   const listProductsCards = await Promise.all(
     products.map(async (product) => {
       return await displayProductInCard(product);
-    }),
+    })
   );
   return listProductsCards.join("");
 }
