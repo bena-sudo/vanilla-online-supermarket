@@ -40,7 +40,7 @@ async function generateProductsInCard(products) {
   const listProductsCards = await Promise.all(
     products.map(async (product) => {
       return await displayProductInCard(product);
-    })
+    }),
   );
   return listProductsCards.join("");
 }
@@ -63,7 +63,7 @@ async function displayProductsInCardsLists(products) {
 
 async function displayProductDetail(product) {
   const productsRelated = await getListAllProductsByCategoryID(
-    product.categoryID
+    product.categoryID,
   );
 
   const listProductsRelatedCards = await Promise.all(
@@ -71,7 +71,7 @@ async function displayProductDetail(product) {
       if (product.id != pro.id) {
         return await displayProductInCard(pro);
       }
-    })
+    }),
   );
   const productDiv = document.createElement("div");
   const image = await getImageProduct(product.imageURL);
