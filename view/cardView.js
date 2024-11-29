@@ -2,7 +2,7 @@ export { displayCardList };
 // SERVICE
 import { getImageProduct } from "../controller/imageController";
 
-  async function displayProductInCard(product){
+async function displayProductInCard(product) {
   const image = await getImageProduct(product.imageURL);
   return `<div class="container">
           <div
@@ -21,7 +21,7 @@ import { getImageProduct } from "../controller/imageController";
               class="img-fluid rounded w-50"
             />
           </div>
-        </div>`
+        </div>`;
 }
 
 async function generateProductsInCard(products) {
