@@ -23,6 +23,7 @@
     "vitest": "^2.1.4"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.46.2",
     "bootstrap": "^5.3.3"
   }
 }

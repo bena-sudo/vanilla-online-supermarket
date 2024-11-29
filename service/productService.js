@@ -1,6 +1,22 @@
-export { getListAllProducts, getProductInfo, getListAllProductsByCategoryID };
+export {
+  getListAllProducts,
+  getProductInfo,
+  getListAllProductsByCategoryID,
+  getListAllProductsSupabe,
+};
 // SERVICE
 import { getDataSupabase } from "./supabaseService";
+import { SUPABASE_KEY, SUPABASE_URL } from "./supabaseService";
+import { createClient } from "@supabase/supabase-js";
+
+async function getListAllProductsSupabe() {
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const { data, error } = await supabase.from("product").select("*");
+  if (error) {
+    console.error(error);
+  }
+  return Array.isArray(data) ? data : [data];
+}
 
 async function getListAllProducts() {
   const data = await getDataSupabase({
