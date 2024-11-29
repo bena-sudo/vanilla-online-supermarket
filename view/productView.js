@@ -61,23 +61,6 @@ async function displayProductsInCardsLists(products) {
   return productsDiv;
 }
 
-async function displayProductRelatedInCard(product) {
-  const image = await getImageProduct(product.imageURL);
-  return ` <div class="col">
-    <div class="card text-center">
-      <img src="${image}" class="card-img-top" alt="Beef chunk for stew" />
-      <div class="card-body text-sm small">
-        <h6 class="card-title text-start">${product.name}</h6>
-        <p class="card-text text-start">Tray 300 g approx.</p>
-        <p class="fw-bold text-start">4,11 € /unit</p>
-        <button class="btn btn-outline-warning w-100 mt-auto">
-          Add to cart
-        </button>
-      </div>
-    </div>
-  </div>`;
-}
-
 async function displayProductDetail(product) {
   const productsRelated = await getListAllProductsByCategoryID(
     product.categoryID
@@ -86,7 +69,7 @@ async function displayProductDetail(product) {
   const listProductsRelatedCards = await Promise.all(
     productsRelated.map(async (pro) => {
       if (product.id != pro.id) {
-        return await displayProductRelatedInCard(pro);
+        return await displayProductInCard(pro);
       }
     })
   );
