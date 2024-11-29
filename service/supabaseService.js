@@ -20,7 +20,7 @@ async function getDataSupabase({ table, column, filter }) {
     },
   })
     .then((response) =>
-      response.status == 200 ? response : Promise.reject(response.status)
+      response.status == 200 ? response : Promise.reject(response.status),
     )
     .then((response) => response.json())
     .catch((error) => Promise.reject("ERROR : " + error));
@@ -37,7 +37,7 @@ async function getImageSupabase(imageURL) {
     },
   })
     .then((response) =>
-      response.status == 200 ? response : Promise.reject(response.status)
+      response.status == 200 ? response : Promise.reject(response.status),
     )
     .then((response) => response.blob())
     .catch((error) => Promise.reject("ERROR : " + error));
