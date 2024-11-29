@@ -76,7 +76,7 @@ async function displayCategoryInLi(category) {
   //const image = await getImageCategory(category.imageURL);
   return `
       <li class="nav-item">
-        <a class="nav-link active" href="#/category/${category.id}" onclick="loadContent('categoria1')">
+        <a class="nav-link active" href="/category/${category.id}" onclick="loadContent('categoria1')">
           ${category.name}
         </a>
       </li>
