@@ -7,6 +7,7 @@ import {
   showProductList,
   showProductDetail,
 } from "../controller/productController";
+import { showCardList } from "../controller/cardController";
 
 async function router(route, containerApp) {
   const [hash, routeModel, routeID] = route.split("/");
@@ -14,6 +15,7 @@ async function router(route, containerApp) {
   switch (routeModel) {
     case "store":
       containerApp.innerHTML = "";
+      containerApp.append(await showCardList());
       containerApp.append(await showProductList());
       break;
     case "categories":
