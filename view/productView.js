@@ -23,7 +23,7 @@ async function displayProductRelatedInCard(product) {
 
 async function displayProductInCard(product) {
   const productsRelated = await getListAllProductsByCategoryID(
-    product.categoryID,
+    product.categoryID
   );
 
   const listProductsRelatedCards = await Promise.all(
@@ -31,7 +31,7 @@ async function displayProductInCard(product) {
       if (product.id != pro.id) {
         return await displayProductRelatedInCard(pro);
       }
-    }),
+    })
   );
 
   const image = await getImageProduct(product.imageURL);
@@ -40,7 +40,7 @@ async function displayProductInCard(product) {
       <div class="card h-100">
         <div class="card-body d-flex flex-column">
           <button
-            class="btn btn-link text-decoration-none"
+            class="btn btn-link text-decoration-none p-0 text-start"
             data-toggle="modal"
             data-target="#ModalLong${product.id}"
           >
@@ -49,14 +49,14 @@ async function displayProductInCard(product) {
             <p class="card-text text-start text-muted">
               ${product.weight} g aprox.
             </p>
-            <p class="fw-bold text-start text-muted mt-auto">
-              ${product.price} /unit
-            </p>
           </button>
+          <p class="fw-bold text-start text-muted mt-auto">
+            ${product.price} /unit
+          </p>
           <button
             type="button"
             href="#/store"
-            class="btn btn-outline-warning w-100 mt-auto"
+            class="btn btn-outline-warning w-100 mt-2"
           >
             Add to cart
           </button>
@@ -133,7 +133,7 @@ async function generateProductsInCard(products) {
   const listProductsCards = await Promise.all(
     products.map(async (product) => {
       return await displayProductInCard(product);
-    }),
+    })
   );
   return listProductsCards.join("");
 }

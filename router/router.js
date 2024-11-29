@@ -9,11 +9,14 @@ import {
 } from "../controller/productController";
 import { showCardList } from "../controller/cardController";
 
-async function router(route, containerApp) {
-  const [hash, routeModel, routeID] = route.split("/");
+async function router(route) {
+  const containerApp = document.querySelector("#containerApp");
+  route = route.replace(/^\/|\/$/g, "");
+  const [routeModel, routeID] = route.split("/");
 
   switch (routeModel) {
     case "store":
+    case "products":
       containerApp.innerHTML = "";
       containerApp.append(await showCardList());
       containerApp.append(await showProductList());
@@ -23,16 +26,19 @@ async function router(route, containerApp) {
       containerApp.append(await showCategoryList());
       break;
     case "product":
-      containerApp.innerHTML = "";
-      containerApp.append(await showProductDetail(routeID));
+      if (routeID) {
+        containerApp.innerHTML = "";
+        containerApp.append(await showProductDetail(routeID));
+      } else {
+        containerApp.innerHTML = "";
+        containerApp.append(await showProductList());
+      }
       break;
     case "category":
       containerApp.innerHTML = "";
       containerApp.append(await showCategoryListById(routeID));
       break;
     default:
-      // Como solucione esto
-      console.log(hash);
-      window.location.hash = "#/store";
+      window.location.pathname = "/store";
   }
 }

@@ -4,10 +4,9 @@ import "./style/style.scss";
 import { router } from "./router/router";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const containerApp = document.querySelector("#containerApp");
-  router(window.location.hash, containerApp);
+  router(window.location.pathname);
 
   window.addEventListener("hashchange", () => {
-    router(window.location.hash, containerApp);
+    router(window.location.pathname);
   });
 });
