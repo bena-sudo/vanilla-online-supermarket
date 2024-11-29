@@ -1,8 +1,42 @@
 export { displayCardList };
+// SERVICE
+import { getImageProduct } from "../controller/imageController";
 
-function displayCardList() {
+  async function displayProductInCard(product){
+  const image = await getImageProduct(product.imageURL);
+  return `<div class="container">
+          <div
+            class="border p-3 rounded d-flex align-items-center justify-content-between"
+          >
+            <div class="d-flex flex-column">
+              <h6 class="mb-1">${product.name}</h6>
+              <p class="mb-2 text-muted">${product.price} € / unit</p>
+              <div>
+                <span class="fw-bold text-primary">1 unit</span>
+              </div>
+            </div>
+            <img
+              src="${image}"
+              alt="${product.name}"
+              class="img-fluid rounded w-50"
+            />
+          </div>
+        </div>`
+}
+
+async function generateProductsInCard(products) {
+  const listProductsCards = await Promise.all(
+    products.map(async (product) => {
+      return await displayProductInCard(product);
+    }),
+  );
+  return listProductsCards.join("");
+}
+
+async function displayCardList(products) {
+  const listProductsCards = await generateProductsInCard(products);
   let cardDiv = document.createElement("div");
-  cardDiv.innerHTML = `<!-- Offcanvas (Right Panel) -->
+  cardDiv.innerHTML = `
     <div
       class="offcanvas offcanvas-end"
       tabindex="-1"
@@ -19,26 +53,9 @@ function displayCardList() {
         ></button>
       </div>
       <div class="offcanvas-body">
-       <div class="container mt-5">
-      <div class="border p-3 rounded d-flex align-items-center justify-content-between">
-        <!-- Detalles del producto -->
-        <div class="d-flex flex-column">
-          <h6 class="mb-1">Light olive oil Hacendado</h6>
-          <p class="mb-2 text-muted">6,75 € / unit</p>
-          <div>
-            <span class="fw-bold text-primary">1 unit</span>
-          </div>
-        </div>
-        <!-- Imagen del producto -->
-        <img
-          src="https://via.placeholder.com/60"
-          alt="Product Image"
-          class="img-fluid rounded"
-        />
+      ${listProductsCards}
       </div>
     </div>
-      </div>
-      </div>
-    </div>`;
+  `;
   return cardDiv;
 }

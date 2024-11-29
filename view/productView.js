@@ -14,7 +14,7 @@ async function displayProductInCard(product) {
             class="btn btn-link text-decoration-none p-0 text-start h-100"
             href="/product/${product.id}"
           >
-            <img src="${image}" class="card-img-top" alt="..." />
+            <img src="${image}" class="card-img-top" alt="${product.name}" />
             <h5 class="card-title text-start text-muted">${product.name}</h5>
             <p class="card-text text-start text-muted">
               ${product.weight} g aprox.
