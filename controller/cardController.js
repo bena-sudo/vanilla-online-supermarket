@@ -3,5 +3,5 @@ export { showCardList };
 import { displayCardList } from "../view/cardView";
 
 function showCardList() {
-    return displayCardList();
+  return displayCardList();
 }

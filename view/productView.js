@@ -23,7 +23,7 @@ async function displayProductRelatedInCard(product) {
 
 async function displayProductInCard(product) {
   const productsRelated = await getListAllProductsByCategoryID(
-    product.categoryID
+    product.categoryID,
   );
 
   const listProductsRelatedCards = await Promise.all(
@@ -31,7 +31,7 @@ async function displayProductInCard(product) {
       if (product.id != pro.id) {
         return await displayProductRelatedInCard(pro);
       }
-    })
+    }),
   );
 
   const image = await getImageProduct(product.imageURL);
@@ -133,7 +133,7 @@ async function generateProductsInCard(products) {
   const listProductsCards = await Promise.all(
     products.map(async (product) => {
       return await displayProductInCard(product);
-    })
+    }),
   );
   return listProductsCards.join("");
 }
