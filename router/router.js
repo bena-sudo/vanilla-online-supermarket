@@ -30,8 +30,7 @@ async function router(route) {
         containerApp.innerHTML = "";
         containerApp.append(await showProductDetail(routeID));
       } else {
-        containerApp.innerHTML = "";
-        containerApp.append(await showProductList());
+        window.location.pathname = "/products";
       }
       break;
     case "category":
