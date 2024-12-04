@@ -8,33 +8,35 @@ import {
   showProductDetail,
 } from "../controller/productController";
 import { showCardList } from "../controller/cardController";
+import { showLoginPage } from "../controller/loginController";
 
 async function router(route) {
   const containerApp = document.querySelector("#containerApp");
   route = route.replace(/^\/|\/$/g, "");
   const [routeModel, routeID] = route.split("/");
 
+  containerApp.innerHTML = "";
+
   switch (routeModel) {
+    case "login":
+      containerApp.append(await showLoginPage());
+      break;
     case "store":
     case "products":
-      containerApp.innerHTML = "";
       containerApp.append(await showCardList());
       containerApp.append(await showProductList());
       break;
     case "categories":
-      containerApp.innerHTML = "";
       containerApp.append(await showCategoryList());
       break;
     case "product":
       if (routeID) {
-        containerApp.innerHTML = "";
         containerApp.append(await showProductDetail(routeID));
       } else {
         window.location.pathname = "/products";
       }
       break;
     case "category":
-      containerApp.innerHTML = "";
       containerApp.append(await showCategoryListById(routeID));
       break;
     default:
