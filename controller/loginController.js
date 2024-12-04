@@ -1,7 +1,7 @@
-export {showLoginPage}
+export { showLoginPage };
 // VIEW
-import { displayLoginPage } from "../view/loginView"
+import { displayLoginPage } from "../view/loginView";
 
-function showLoginPage(){
-    return displayLoginPage();
+function showLoginPage() {
+  return displayLoginPage();
 }
