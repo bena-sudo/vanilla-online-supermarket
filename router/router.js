@@ -43,11 +43,10 @@ async function router(route) {
       break;
     case "editcategory":
       if (routeID) {
-        containerApp.append(await showEditCategoryPage(routeID))
+        containerApp.append(await showEditCategoryPage(routeID));
       } else {
-        containerApp.append(await showCreateCategoryPage())
+        containerApp.append(await showCreateCategoryPage());
       }
-      ;
       break;
     default:
       window.location.pathname = "/store";

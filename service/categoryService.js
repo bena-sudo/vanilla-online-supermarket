@@ -1,6 +1,15 @@
-export { getListAllCategories, getCategoryInfo, createCategoryService ,editCategoryService};
+export {
+  getListAllCategories,
+  getCategoryInfo,
+  createCategoryService,
+  editCategoryService,
+};
 // SERVICE
-import { getDataSupabase, postDataSupabase, putDataSupabase } from "./supabaseService";
+import {
+  getDataSupabase,
+  postDataSupabase,
+  putDataSupabase,
+} from "./supabaseService";
 
 async function getListAllCategories() {
   const data = await getDataSupabase({

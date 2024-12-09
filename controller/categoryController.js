@@ -52,7 +52,7 @@ async function showCreateCategoryPage() {
   const categoriesList = await getListAllCategories();
   createCategoryPage.setAttribute(
     "data-categorieslist",
-    JSON.stringify(categoriesList)
+    JSON.stringify(categoriesList),
   );
   return createCategoryPage;
 }

@@ -1,4 +1,4 @@
-import {editCategory } from "../controller/categoryController";
+import { editCategory } from "../controller/categoryController";
 
 export class EditCategory extends HTMLElement {
   constructor() {
@@ -6,8 +6,7 @@ export class EditCategory extends HTMLElement {
   }
   connectedCallback() {
     const category = JSON.parse(this.getAttribute("data-category"));
-    console.log(category);
-    
+
     this.innerHTML = `
       <form id="editCategoryForm">
         <div class="form-group">
