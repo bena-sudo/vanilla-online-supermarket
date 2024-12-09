@@ -2,6 +2,7 @@ export { router };
 import {
   showCategoryList,
   showCategoryListById,
+  showEditCategoryPage
 } from "../controller/categoryController";
 import {
   showProductList,
@@ -38,6 +39,9 @@ async function router(route) {
       break;
     case "category":
       containerApp.append(await showCategoryListById(routeID));
+      break;
+    case "editcategory":
+      containerApp.append(await showEditCategoryPage());
       break;
     default:
       window.location.pathname = "/store";
