@@ -38,7 +38,7 @@ async function showEditCategoryPage() {
   const editCategoryPage = document.createElement("edit-category");
   editCategoryPage.setAttribute(
     "data-categorieslist",
-    JSON.stringify(categoriesList)
+    JSON.stringify(categoriesList),
   );
   return editCategoryPage;
 }

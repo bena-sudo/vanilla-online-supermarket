@@ -2,7 +2,7 @@ export { router };
 import {
   showCategoryList,
   showCategoryListById,
-  showEditCategoryPage
+  showEditCategoryPage,
 } from "../controller/categoryController";
 import {
   showProductList,
