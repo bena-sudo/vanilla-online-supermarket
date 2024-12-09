@@ -1,25 +1,15 @@
-import {editCategory } from "../controller/categoryController";
+import { createCategory } from "../controller/categoryController";
 
-export class EditCategory extends HTMLElement {
+export class CreateCategory extends HTMLElement {
   constructor() {
     super();
   }
   connectedCallback() {
-    const category = JSON.parse(this.getAttribute("data-category"));
-    console.log(category);
-    
+    const categoriesList = JSON.parse(this.getAttribute("data-categorieslist"));
+
     this.innerHTML = `
       <form id="editCategoryForm">
         <div class="form-group">
-        <label for="InputName">ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="InputName"
-            readonly
-            name="id"
-            value="${category.id}"
-          />
           <label for="InputName">Name</label>
           <input
             type="text"
@@ -27,7 +17,6 @@ export class EditCategory extends HTMLElement {
             id="InputName"
             placeholder="Enter name"
             name="name"
-            value="${category.name}"
           />
           <small id="nameHelp" class="form-text text-muted"
             >You need to enter a valid name.</small
@@ -41,17 +30,38 @@ export class EditCategory extends HTMLElement {
             id="InputDescription"
             placeholder="Enter description"
             name="description"
-            value="${category.description}"
           />
         </div>
         <button type="button" class="btn btn-primary">Submit</button>
-      </form>`;
-
+      </form>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Desciption</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${categoriesList
+            .map((product) => {
+              return `
+            <tr>
+              <th scope="row">${product.id}</th>
+              <td>${product.name}</td>
+              <td>${product.description}</td>
+            </tr>`;
+            })
+            .join("")}
+        </tbody>
+      </table>`;
+            console.log();
+            
     const botonForm = this.querySelector("#editCategoryForm button");
     botonForm.addEventListener("click", () => {
       const data = new FormData(document.querySelector("#editCategoryForm"));
-      editCategory(Object.fromEntries(data));
+      createCategory(Object.fromEntries(data));
     });
   }
 }
-customElements.define("edit-category", EditCategory);
+customElements.define("create-category", CreateCategory);

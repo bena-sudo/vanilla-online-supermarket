@@ -1,6 +1,6 @@
-export { getListAllCategories, getCategoryInfo, createCategoryService };
+export { getListAllCategories, getCategoryInfo, createCategoryService ,editCategoryService};
 // SERVICE
-import { getDataSupabase, postDataSupabase } from "./supabaseService";
+import { getDataSupabase, postDataSupabase, putDataSupabase } from "./supabaseService";
 
 async function getListAllCategories() {
   const data = await getDataSupabase({
@@ -23,6 +23,15 @@ async function getCategoryInfo(categoryID) {
 async function createCategoryService(category) {
   const data = await postDataSupabase({
     table: "category",
+    body: category,
+  });
+  return Array.isArray(data) ? data : [data];
+}
+
+async function editCategoryService(category) {
+  const data = await putDataSupabase({
+    table: "category",
+    filter: "id=eq." + category.id,
     body: category,
   });
   return Array.isArray(data) ? data : [data];

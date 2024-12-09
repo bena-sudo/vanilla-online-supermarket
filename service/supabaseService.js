@@ -2,6 +2,7 @@ export {
   getDataSupabase,
   getImageSupabase,
   postDataSupabase,
+  putDataSupabase,
   SUPABASE_URL,
   SUPABASE_KEY,
 };
@@ -19,7 +20,7 @@ async function getDataSupabase({ table, column, filter }) {
     route += `&${filter}`;
   }
   const response = await fetch(route, {
-    method: "get",
+    method: "GET",
     headers: {
       apiKey: SUPABASE_KEY,
       Authorization: `Bearer ${SUPABASE_KEY}`,
@@ -36,7 +37,7 @@ async function getDataSupabase({ table, column, filter }) {
 async function getImageSupabase(imageURL) {
   let route = `https://oczyaubkiglaukdewroq.supabase.co/storage/v1/object/${imageURL}`;
   const response = await fetch(route, {
-    method: "get",
+    method: "GET",
     headers: {
       apiKey: SUPABASE_KEY,
       Authorization: `Bearer ${SUPABASE_KEY}`,
@@ -55,6 +56,26 @@ async function postDataSupabase({ table, body }) {
 
   const response = await fetch(route, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      apiKey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) =>
+      response.status == 200 ? response : Promise.reject(response.status),
+    )
+    .then((response) => response.json())
+    .catch((error) => Promise.reject("ERROR : " + error));
+  return response;
+}
+
+async function putDataSupabase({ table, filter, body }) {
+  let route = `https://oczyaubkiglaukdewroq.supabase.co/rest/v1/${table}?${filter}`;
+
+  const response = await fetch(route, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       apiKey: SUPABASE_KEY,
