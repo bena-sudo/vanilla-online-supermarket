@@ -10,7 +10,6 @@ import {
   showProductDetail,
   showCreateProductPage,
 } from "../controller/productController";
-import { showCardList } from "../controller/cardController";
 import { showLoginPage } from "../controller/loginController";
 
 async function router(route) {
@@ -26,7 +25,6 @@ async function router(route) {
       break;
     case "store":
     case "products":
-      containerApp.append(await showCardList());
       containerApp.append(await showProductList());
       break;
     case "categories":

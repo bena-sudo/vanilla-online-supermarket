@@ -47,9 +47,9 @@ async function getListAllProductsByCategoryID(categoryID) {
 }
 
 async function createProductService(product) {
-    const data = await postDataSupabase({
-      table: "product",
-      body: product,
-    });
-    return Array.isArray(data) ? data : [data];
+  const data = await postDataSupabase({
+    table: "product",
+    body: product,
+  });
+  return Array.isArray(data) ? data : [data];
 }
