@@ -3,9 +3,10 @@ export {
   getProductInfo,
   getListAllProductsByCategoryID,
   getListAllProductsSupabe,
+  createProductService,
 };
 // SERVICE
-import { getDataSupabase } from "./supabaseService";
+import { getDataSupabase, postDataSupabase } from "./supabaseService";
 import { SUPABASE_KEY, SUPABASE_URL } from "./supabaseService";
 import { createClient } from "@supabase/supabase-js";
 
@@ -43,4 +44,12 @@ async function getListAllProductsByCategoryID(categoryID) {
     filter: "categoryID=eq." + categoryID,
   });
   return Array.isArray(data) ? data : [data];
+}
+
+async function createProductService(product) {
+    const data = await postDataSupabase({
+      table: "product",
+      body: product,
+    });
+    return Array.isArray(data) ? data : [data];
 }

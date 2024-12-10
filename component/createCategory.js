@@ -56,8 +56,8 @@ export class CreateCategory extends HTMLElement {
         </tbody>
       </table>`;
 
-    const botonForm = this.querySelector("#editCategoryForm button");
-    botonForm.addEventListener("click", () => {
+    const butonForm = this.querySelector("#editCategoryForm button");
+    butonForm.addEventListener("click", () => {
       const data = new FormData(document.querySelector("#editCategoryForm"));
       createCategory(Object.fromEntries(data));
     });

@@ -8,6 +8,7 @@ import {
 import {
   showProductList,
   showProductDetail,
+  showCreateProductPage,
 } from "../controller/productController";
 import { showCardList } from "../controller/cardController";
 import { showLoginPage } from "../controller/loginController";
@@ -46,6 +47,13 @@ async function router(route) {
         containerApp.append(await showEditCategoryPage(routeID));
       } else {
         containerApp.append(await showCreateCategoryPage());
+      }
+      break;
+    case "editproduct":
+      if (routeID) {
+        containerApp.append(console.log("Not Implemented"));
+      } else {
+        containerApp.append(await showCreateProductPage());
       }
       break;
     default:
