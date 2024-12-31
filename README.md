@@ -45,8 +45,8 @@ Follow these steps to clone, set up, and run the project locally:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/bena-sudo/OnlineStoreProject.git
-   cd OnlineStoreProject
+   git clone https://github.com/bena-sudo/vanilla-online-supermarket.git
+   cd vanilla-online-supermarket
    ```
 2. **Install dependencies**
    Ensure Node.js is installed, then run:
