@@ -1,8 +1,8 @@
-# 🛒 Online Store Project
+# 🛒 VanillaOnlineSupermarket
 
 ## 🎯 Project Objective
 
-The **Online Store Project** is a modern e-commerce platform designed to enhance the online shopping experience. Users can browse products, manage their shopping cart, and complete the checkout process seamlessly. This project leverages vanilla JavaScript for the frontend, Supabase for the backend, and Bootstrap for responsive design.
+The **Vanilla Online Supermarket** is a modern e-commerce platform designed to enhance the online shopping experience. Users can browse products, manage their shopping cart, and complete the checkout process seamlessly. This project leverages vanilla JavaScript for the frontend, Supabase for the backend, and Bootstrap for responsive design.
 
 ---
 
