@@ -21,7 +21,7 @@ async function router(route) {
 
   switch (routeModel) {
     case "login":
-      containerApp.append(await showLoginPage());
+      containerApp.append(showLoginPage());
       break;
     case "store":
     case "products":

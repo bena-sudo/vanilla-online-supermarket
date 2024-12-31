@@ -20,15 +20,13 @@ The **Online Store Project** is a modern e-commerce platform designed to enhance
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](path/to/screenshot-homepage.png)
+![Home Page](/public/screenshot/screenshot-homepage.png)
 
 ### Product Listing
-![Product Listing](path/to/screenshot-products.png)
+![Product Listing](/public/screenshot/screenshot-homepage.png)
 
 ### Shopping Cart
-![Shopping Cart](path/to/screenshot-cart.png)
-
-*(Replace `path/to/screenshot` with actual paths to your screenshots.)*
+![Shopping Cart](/public/screenshot/screenshot-homepage.png)
 
 ---
 
