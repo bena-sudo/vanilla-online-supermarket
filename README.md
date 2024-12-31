@@ -8,24 +8,27 @@ The **Online Store Project** is a modern e-commerce platform designed to enhance
 
 ## 🛠️ Technologies Used
 
-- **Frontend Development:** JavaScript (vanilla), HTML5, CSS3  
-- **Styling Framework:** Bootstrap  
-- **Build Tool:** Vite  
-- **Backend:** Supabase (Database and Authentication)  
-- **Development Tools:** Visual Studio Code, Node.js  
-- **Version Control:** Git  
+- **Frontend Development:** JavaScript (vanilla), HTML5, CSS3
+- **Styling Framework:** Bootstrap
+- **Build Tool:** Vite
+- **Backend:** Supabase (Database and Authentication)
+- **Development Tools:** Visual Studio Code, Node.js
+- **Version Control:** Git
 
 ---
 
 ## 📸 Screenshots
 
 ### Home Page
+
 ![Home Page](/public/screenshot/screenshot-homepage.png)
 
 ### Product Listing
+
 ![Product Listing](/public/screenshot/screenshot-homepage.png)
 
 ### Shopping Cart
+
 ![Shopping Cart](/public/screenshot/screenshot-homepage.png)
 
 ---
@@ -34,7 +37,7 @@ The **Online Store Project** is a modern e-commerce platform designed to enhance
 
 Follow these steps to clone, set up, and run the project locally:
 
-1. **Clone the repository**  
+1. **Clone the repository**
    ```bash
    git clone https://github.com/bena-sudo/OnlineStoreProject.git
    cd OnlineStoreProject
@@ -52,7 +55,7 @@ Follow these steps to clone, set up, and run the project locally:
    Once the server is running, open your browser and navigate to:
    ```bash
    http://localhost:3000
-   ```   
+   ```
 4. **Build the project (optional)**
    To generate a production-ready build of the project, use:
    ```bash
