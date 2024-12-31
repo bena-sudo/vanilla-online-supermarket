@@ -38,5 +38,26 @@ Follow these steps to clone, set up, and run the project locally:
 
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/yourusername/OnlineStoreProject.git
+   git clone https://github.com/yourusername/angular-online-supermarket.git
    cd OnlineStoreProject
+   ```
+2. **Install dependencies**
+   Ensure Node.js is installed, then run:
+   ```bash
+   npm install
+   ```
+3. **Run the development server**
+   Start the Vite development server with:
+   ```bash
+   npm run dev
+   ```
+   Once the server is running, open your browser and navigate to:
+   ```bash
+   http://localhost:3000
+   ```   
+4. **Build the project (optional)**
+   To generate a production-ready build of the project, use:
+   ```bash
+   npm run build
+   ```
+   The build artifacts will be stored in the dist/ directory.
