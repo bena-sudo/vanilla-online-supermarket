@@ -60,4 +60,4 @@ Follow these steps to clone, set up, and run the project locally:
    ```bash
    npm run build
    ```
-   The build artifacts will be stored in the dist/ directory.
+   The build artifacts will be stored in the `dist/` directory.
