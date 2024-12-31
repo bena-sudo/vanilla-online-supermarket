@@ -23,13 +23,19 @@ The **Online Store Project** is a modern e-commerce platform designed to enhance
 
 ![Home Page](/public/screenshot/screenshot-homepage.png)
 
-### Product Listing
+### Category Listing
 
-![Product Listing](/public/screenshot/screenshot-homepage.png)
+![Category Listing](/public/screenshot/screenshot-categories.png)
 
-### Shopping Cart
+### Product Page
 
-![Shopping Cart](/public/screenshot/screenshot-homepage.png)
+![Product Page](/public/screenshot/screenshot-product.png)
+
+### Category CRUD
+
+![Category CRUD](/public/screenshot/screenshot-editcategory-create.png)
+
+![Category CRUD](/public/screenshot/screenshot-editcategory-edit.png)
 
 ---
 
