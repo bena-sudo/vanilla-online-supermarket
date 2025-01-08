@@ -20,7 +20,7 @@ async function displayProductInCard(product) {
               ${product.weight} g aprox.
             </p>
             <p class="fw-bold text-start text-muted">
-            ${product.price} /unit
+            ${product.price}€
             </p>
             </a>
           <button
@@ -90,7 +90,7 @@ async function displayProductDetail(product) {
         <div class="col-md-4">
           <h2 class="fw-bold">${product.name}</h2>
           <p class="text-muted">${product.description}</p>
-          <h2 class="fw-bold text-success">${product.price}/unit</h2>
+          <h2 class="fw-bold text-success">${product.price}€</h2>
           <button class="btn btn-warning btn-lg w-100 mt-3">Add to cart</button>
         </div>
       </div>
