@@ -14,8 +14,7 @@ import { showLoginPage } from "../controller/loginController";
 
 async function router(route) {
   const containerApp = document.querySelector("#containerApp");
-  route = route.replace(/^\/|\/$/g, "");
-  const [routeModel, routeID] = route.split("/");
+  const [hash, routeModel, routeID] = route.split("/");
 
   containerApp.innerHTML = "";
 
@@ -55,6 +54,7 @@ async function router(route) {
       }
       break;
     default:
-      window.location.pathname = "/store";
+      console.log(hash);
+      window.location.hash = "#/store";
   }
 }

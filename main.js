@@ -4,9 +4,9 @@ import "./style/style.scss";
 import { router } from "./router/router";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  router(window.location.pathname);
+  router(window.location.hash);
 
   window.addEventListener("hashchange", () => {
-    router(window.location.pathname);
+    router(window.location.hash);
   });
 });
